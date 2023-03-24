@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FE58FA2E-1DAC-48FB-B753-F5FDE3E02969}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Beaver</RootNamespace>
+    <AssemblyName>Beaver</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Beaver3D">
+      <HintPath>C:\Users\DELL\AppData\Roaming\Grasshopper\Libraries\Beaver\Beaver3D.dll</HintPath>
+    </Reference>
+    <Reference Include="Gurobi90.NET">
+      <HintPath>D:\ProgrammingPackage\Gurobi903\win64\bin\Gurobi90.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="RhinoCommon">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Rhino 6\System\RhinoCommon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Grasshopper">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Rhino 6\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GH_IO">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Rhino 6\Plug-ins\Grasshopper\GH_IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BeaverInfo.cs" />
+    <Compile Include="Components\CrossSection\CircularHollowSection_Component.cs" />
+    <Compile Include="Components\CrossSection\CircularSection_Component.cs" />
+    <Compile Include="Components\CrossSection\GenericSection_Component.cs" />
+    <Compile Include="Components\CrossSection\HEASection_Component.cs" />
+    <Compile Include="Components\CrossSection\IPESection_Component.cs" />
+    <Compile Include="Components\CrossSection\LSection_Component.cs" />
+    <Compile Include="Components\CrossSection\RHSection_Component.cs" />
+    <Compile Include="Components\CrossSection\SHSection_Component.cs" />
+    <Compile Include="Components\Display\DisplayStock_Component.cs" />
+    <Compile Include="Components\Display\DisplayStructure_Component.cs" />
+    <Compile Include="Components\Display\ResultsComponent.cs" />
+    <Compile Include="Components\Geometry\Bar_Component.cs" />
+    <Compile Include="Components\CrossSection\RectangularSection_Component.cs" />
+    <Compile Include="Components\Geometry\Bar_Component_Extended.cs" />
+    <Compile Include="Components\Geometry\Structure_Component.cs" />
+    <Compile Include="Components\Geometry\Support_Component.cs" />
+    <Compile Include="Components\Loads\DiscplacementBound_Component.cs" />
+    <Compile Include="Components\Loads\LoadCase_Component.cs" />
+    <Compile Include="Components\Loads\PointLoad_Component.cs" />
+    <Compile Include="Components\Material\Steel_Component.cs" />
+    <Compile Include="Components\Material\Timber_Component.cs" />
+    <Compile Include="Components\Optimization\DiscreteStockConstrainedOptimization_Component.cs" />
+    <Compile Include="Components\Optimization\GhcGurobiTest.cs" />
+    <Compile Include="Components\Optimization\Options\DSCOOptions_Component.cs" />
+    <Compile Include="Components\Reuse\NewElementGroup_Component.cs" />
+    <Compile Include="Components\Reuse\ReuseElementGroup_Component.cs" />
+    <Compile Include="Components\Reuse\Stock_Component.cs" />
+    <Compile Include="Display\ColorPalette.cs" />
+    <Compile Include="Display\ColorStyle.cs" />
+    <Compile Include="Display\DisplayHelper.cs" />
+    <Compile Include="Display\DisplayResultsType.cs" />
+    <Compile Include="Display\MemberColor.cs" />
+    <Compile Include="Display\Profile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReuseScripts\Info\LightCallback.cs" />
+    <Compile Include="ReuseScripts\Info\LogCallback.cs" />
+    <Compile Include="ReuseScripts\Info\LPOptimizer.cs" />
+    <Compile Include="ReuseScripts\Info\MILPFormulation.cs" />
+    <Compile Include="ReuseScripts\Info\MILPOptimizer.cs" />
+    <Compile Include="ReuseScripts\Info\MyListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReuseScripts\Info\MyLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReuseScripts\Info\MyLog.designer.cs" />
+    <Compile Include="ReuseScripts\Info\NLPOptimizer.cs" />
+    <Compile Include="ReuseScripts\Info\Objective.cs" />
+    <Compile Include="ReuseScripts\Info\OptimOptions.cs" />
+    <Compile Include="ReuseScripts\Optimization\BilinearTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MachineLearning\" />
+    <Folder Include="Model\" />
+    <Folder Include="ReuseScripts\Optimization\SAND\" />
+    <Folder Include="ReuseScripts\Optimization\TopologyOptimization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReuseScripts\Info\MyLog.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\ReuseOptimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bar_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CircularHollowSection_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CircularSection_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GenericSection_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle_hollow_section_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rectangle_section_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SquareHollowSection_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LSection_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HEASection_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IPESection_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bar Extended_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Structure_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Support_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PointLoad_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoadCase_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Displacement Bounds_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Steel_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Timber_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewElement_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ReuseElement_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DSCO_Solver_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DSCO_Option_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DisplayStructure_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DisplayStock_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DisplayResult_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stock_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gurobi_BeaverIcon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>Copy "$(TargetPath)" "$(TargetDir)$(ProjectName).gha"
+Copy "$(TargetPath)" "C:\Users\DELL\AppData\Roaming\Grasshopper\Libraries\Beaver\Beaver.gha"
+Erase "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <FallbackCulture>en-US</FallbackCulture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartProgram>C:\Program Files\Rhino 6\System\Rhino.exe</StartProgram>
+    <StartArguments>
+    </StartArguments>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
+</Project>
