@@ -36,7 +36,7 @@ namespace Beaver.Model.Loads
 		protected override void SolveInstance(IGH_DataAccess DA)
 		{
 			List<Point3d> list = new List<Point3d>();
-			Vector3d force = default(Vector3d);
+			Vector3d force = default(Vector3d);   //受力
 
 			DA.GetDataList<Point3d>(0, list);
 			DA.GetData<Vector3d>(1, ref force);
@@ -48,6 +48,7 @@ namespace Beaver.Model.Loads
 			{
 				Node node = new Node(item.X, item.Y, item.Z);
 				PointLoad item2 = new PointLoad(node, force.X, force.Y, force.Z, 0.0, 0.0, 0.0);
+
 				this.Locations.Add(item);
 				list2.Add(item2);
 			}
@@ -55,7 +56,7 @@ namespace Beaver.Model.Loads
 			DA.SetDataList(0, list2);
 		}
 
-		// Token: 0x060000D2 RID: 210 RVA: 0x00006A6C File Offset: 0x00004C6C
+		// 画出受力的框线，力越大线越长
 		public override void DrawViewportWires(IGH_PreviewArgs args)
 		{
 			Color limeGreen = Color.LimeGreen;

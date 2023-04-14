@@ -41,7 +41,6 @@ namespace Beaver.Components.Model
 		protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
 		{
 			pManager.AddGenericParameter("Bar", "M", "Bar member", 0);
-			pManager.AddBooleanParameter("Bar", "M", "Bar member", 0);
 		}
 
 		// Token: 0x06000092 RID: 146 RVA: 0x00005020 File Offset: 0x00003220
@@ -98,7 +97,6 @@ namespace Beaver.Components.Model
 
 
 			DA.SetData(0, bar);
-			DA.SetData(1, normalOverwritten);
 		}
 
 		// Token: 0x1700005C RID: 92

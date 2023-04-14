@@ -55,7 +55,7 @@ namespace Beaver.Components.Model
 
 
 			this.Locations.Clear();
-			this.DOFs = new Tuple<bool, bool, bool, bool, bool, bool>(gh_Boolean.Value, gh_Boolean2.Value, gh_Boolean3.Value, true, true, true);
+			this.DOFs = new Tuple<bool, bool, bool, bool, bool, bool>(gh_Boolean.Value, gh_Boolean2.Value, gh_Boolean3.Value, true, true, true);  //记录6个布尔值，前三个代表xyz的是否固定
 			foreach (Point3d item in list)
 			{
 				Node n = new Node(item.X, item.Y, item.Z);
@@ -176,10 +176,10 @@ namespace Beaver.Components.Model
 			}
 		}
 
-		// Token: 0x04000005 RID: 5
+		// 记录每个基座的xyz是否固定
 		private Tuple<bool, bool, bool, bool, bool, bool> DOFs = new Tuple<bool, bool, bool, bool, bool, bool>(false, false, false, false, false, false);
 
-		// Token: 0x04000006 RID: 6
+		// 记录位置
 		private List<Point3d> Locations = new List<Point3d>();
 
 		// Token: 0x04000007 RID: 7

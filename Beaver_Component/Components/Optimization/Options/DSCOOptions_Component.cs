@@ -64,8 +64,9 @@ namespace Beaver.Optimization.Options
 			bool selfweight = false;
 			bool cuttingStock = false;
 			bool topologyFixed = false;
+			List<string> list = new List<string>();   //表单中的gurobi优化器参数列表或“参数名称，值”
 
-			List<string> list = new List<string>();
+
 			DA.GetData<int>(0, ref milpoptimizer);
 			DA.GetData<int>(1, ref maxValue);
 			DA.GetData<bool>(2, ref logToConsole);
@@ -75,12 +76,13 @@ namespace Beaver.Optimization.Options
 			DA.GetData<bool>(6, ref cuttingStock);
 			DA.GetData<bool>(7, ref topologyFixed);
 			DA.GetDataList<string>(8, list);
+
 			OptimOptions optimOptions = new OptimOptions();
-			optimOptions.MILPOptimizer = (MILPOptimizer)milpoptimizer;
+			optimOptions.MILPOptimizer = (MILPOptimizer)milpoptimizer;  //使用gurobi（milpoptimizer默认=0）
 			optimOptions.MaxTime = maxValue;
 			optimOptions.LogToConsole = logToConsole;
-			optimOptions.LogFormName = logFormName;
-			optimOptions.MILPFormulation = (MILPFormulation)milpformulation;
+			optimOptions.LogFormName = logFormName;    //弹窗的名称
+			optimOptions.MILPFormulation = (MILPFormulation)milpformulation;    //选择计算公式，默认Bruetting的计算公式（milpformulation=0）
 			optimOptions.Selfweight = selfweight;
 			optimOptions.Compatibility = compatibility;
 			optimOptions.CuttingStock = cuttingStock;
@@ -88,7 +90,7 @@ namespace Beaver.Optimization.Options
 
             foreach (string text in list)
 			{
-				string[] array = text.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+				string[] array = text.Split(separator, StringSplitOptions.RemoveEmptyEntries);    
 				string item = array[0];
 				string item2 = array[1];
 				optimOptions.GurobiParameters.Add(new Tuple<string, string>(item, item2));

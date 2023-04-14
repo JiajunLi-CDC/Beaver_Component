@@ -38,9 +38,11 @@ namespace Beaver.Components.Model
 			List<IMember> list = new List<IMember>();
 			List<Support> list2 = new List<Support>();
 			List<LoadCase> list3 = new List<LoadCase>();
-			DA.GetDataList<IMember>(0, list);
-			DA.GetDataList<Support>(1, list2);
-			DA.GetDataList<LoadCase>(2, list3);
+
+			DA.GetDataList<IMember>(0, list);     //获取杆件
+			DA.GetDataList<Support>(1, list2);      //获取支座
+			DA.GetDataList<LoadCase>(2, list3);       //获取荷载
+
 			Structure structure = new Structure();
 			foreach (IMember m in list)
 			{

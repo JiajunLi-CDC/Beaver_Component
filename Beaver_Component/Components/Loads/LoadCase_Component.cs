@@ -38,24 +38,26 @@ namespace Beaver.Model.Loads
 		protected override void SolveInstance(IGH_DataAccess DA)
 		{
 			List<PointLoad> list = new List<PointLoad>();
-			List<DisplacementBound> list2 = new List<DisplacementBound>();
+			List<DisplacementBound> list2 = new List<DisplacementBound>();    //位移界限
 			string name = "";
-			double selfWeightFactor = 1.0;
+			double selfWeightFactor = 1.0;  //自重系数
 
-			DA.GetData<string>(0, ref name);
-			DA.GetDataList<PointLoad>(1, list);
-			DA.GetDataList<DisplacementBound>(2, list2);
+			DA.GetData<string>(0, ref name);  //获取荷载名称
+			DA.GetDataList<PointLoad>(1, list);     //获取点荷载
+			DA.GetDataList<DisplacementBound>(2, list2);    //获取位移界限
 			DA.GetData<double>(3, ref selfWeightFactor);
 
-			LoadCase loadCase = new LoadCase(name, selfWeightFactor);
+			LoadCase loadCase = new LoadCase(name, selfWeightFactor);    //实例化
+
+
 			foreach (PointLoad pointLoad in list)
 			{
-				bool flag = loadCase.Loads.Contains(pointLoad);
+				bool flag = loadCase.Loads.Contains(pointLoad);    //如果该节点已经包含该荷载定义
 				if (flag)
 				{
 					this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Multiple force or moment vectors are defined for the same Node. Force and moment vectors are added!");
 				}
-				loadCase.AddLoad(pointLoad);
+				loadCase.AddLoad(pointLoad);  //增加点荷载
 			}
 			foreach (DisplacementBound displacementBound in list2)
 			{
@@ -64,13 +66,12 @@ namespace Beaver.Model.Loads
 				{
 					this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Multiple displacement bound vectors are defined for the same Node. The last item is taken!");
 				}
-				loadCase.AddDisplacementBound(displacementBound);
+				loadCase.AddDisplacementBound(displacementBound);  // 增加位移界限
 			}
 			DA.SetData(0, loadCase);
 		}
 
-		// Token: 0x17000072 RID: 114
-		// (get) Token: 0x060000CB RID: 203 RVA: 0x0000684C File Offset: 0x00004A4C
+		
 		protected override Bitmap Icon
 		{
 			get

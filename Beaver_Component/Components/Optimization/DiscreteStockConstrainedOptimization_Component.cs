@@ -63,16 +63,18 @@ namespace Beaver.Optimization
 			Structure structure = null;
 			Stock stock = null;
 			List<string> list = new List<string>();
-			int num = 0;
+			int num = 0;  //默认优化目标为最小结构质量
 			OptimOptions options = new OptimOptions();
 			List<GH_Point> list2 = new List<GH_Point>();
 			List<GH_Point> list3 = new List<GH_Point>();
+
+
 			DA.GetData<Structure>(0, ref structure);
 			DA.GetData<Stock>(1, ref stock);
 			DA.GetData<int>(2, ref num);
-			DA.GetDataList<string>(3, list);
+			DA.GetDataList<string>(3, list);  //荷载的信息
 			DA.GetData<OptimOptions>(4, ref options);
-			DA.GetData<bool>(5, ref flag);
+			DA.GetData<bool>(5, ref flag);  //是否计算
 			structure = structure.Clone();
 			stock = stock.Clone();
 			num--;
@@ -80,7 +82,7 @@ namespace Beaver.Optimization
 			stopwatch.Start();
 			DiscreteStockConstrainedOptimization discreteStockConstrainedOptimization = new DiscreteStockConstrainedOptimization((Objective)num, options);
 
-			bool flag2 = flag;
+			bool flag2 = flag;  
 			if (flag2)
 			{
 				discreteStockConstrainedOptimization.Solve(structure, list, stock, new GHGFrontiers());   //gurobi计算
