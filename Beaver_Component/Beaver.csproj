@@ -80,6 +80,8 @@
     <Compile Include="Components\Geometry\Bar_Component.cs" />
     <Compile Include="Components\CrossSection\RectangularSection_Component.cs" />
     <Compile Include="Components\Geometry\Bar_Component_Extended.cs" />
+    <Compile Include="Components\Geometry\MultyStructures_Component.cs" />
+    <Compile Include="Components\Geometry\SingleStructure Component.cs" />
     <Compile Include="Components\Geometry\Structure_Component.cs" />
     <Compile Include="Components\Geometry\Support_Component.cs" />
     <Compile Include="Components\Loads\DiscplacementBound_Component.cs" />
@@ -87,8 +89,10 @@
     <Compile Include="Components\Loads\PointLoad_Component.cs" />
     <Compile Include="Components\Material\Steel_Component.cs" />
     <Compile Include="Components\Material\Timber_Component.cs" />
+    <Compile Include="Components\Optimization\DiscreteMultyStructureReuseOptimization_Component.cs" />
     <Compile Include="Components\Optimization\DiscreteStockConstrainedOptimization_Component.cs" />
     <Compile Include="Components\Optimization\GhcGurobiTest.cs" />
+    <Compile Include="Components\Optimization\Options\DMSOOptions_Component.cs" />
     <Compile Include="Components\Optimization\Options\DSCOOptions_Component.cs" />
     <Compile Include="Components\Reuse\NewElementGroup_Component.cs" />
     <Compile Include="Components\Reuse\ReuseElementGroup_Component.cs" />
@@ -222,6 +226,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Gurobi_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MultyStructure_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SingleStructure_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DMSO_Solver_BeaverIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DMSO_Option_BeaverIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

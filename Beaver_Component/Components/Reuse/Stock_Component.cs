@@ -27,6 +27,7 @@ namespace Beaver.Reuse
 		protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
 		{
 			pManager.AddGenericParameter("Stock", "Stock", "Stock of reclaimed elements and new element candidates", 0);
+			pManager.AddGenericParameter("CrossSectionType_num", "CrossSectionType_num", "number of different Cross Section type", GH_ParamAccess.list);
 		}
 
 		// Token: 0x0600000D RID: 13 RVA: 0x000021AC File Offset: 0x000003AC
@@ -36,7 +37,18 @@ namespace Beaver.Reuse
 			int sortBy = 0;
 			DA.GetDataList<ElementGroup>(0, list);
 			DA.GetData<int>(1, ref sortBy);
-			DA.SetData(0, new Stock(list, (SortStockElementsBy)sortBy));
+
+			Stock stock = new Stock(list, (SortStockElementsBy)sortBy);
+			stock.GetDifferentCrossSectionGroup();
+
+			List<double> debug= new List<double>();
+			for(int i = 0; i < stock.crossSectionType.Count; i++)
+            {
+				debug.Add(stock.crossSectionType[i].Area);
+            }
+
+			DA.SetData(0,stock);
+			DA.SetDataList(1, debug);
 		}
 
 		// Token: 0x17000007 RID: 7

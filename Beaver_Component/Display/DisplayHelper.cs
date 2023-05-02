@@ -244,7 +244,7 @@ namespace Beaver.Display
 			point3d2 = new Point3d(M.To.X, M.To.Y, M.To.Z);
 			double length = M.Length;
 
-			//这里有问题,m的这个displacements什么时候设置了？
+			//这里有问题,m的这个displacements什么时候设置了？（需要在另一个有限元中求解）
 			bool flaggg = M.To.Displacements.ContainsKey(LC);
 			
 			bool flag = LC != null && S.LoadCases.Contains(LC) && M.From.Displacements.ContainsKey(LC) && M.To.Displacements.ContainsKey(LC);

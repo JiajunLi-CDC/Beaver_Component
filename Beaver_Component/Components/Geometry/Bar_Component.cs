@@ -60,7 +60,7 @@ namespace Beaver.Components.Model
 			{
 				this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "The provided member normal " + zaxis.ToString() + " coincides with the member direction. Normal has been overwritten to " + bar.Normal.ToString());
 			}
-			DA.SetData(0, bar);
+			DA.SetData(0, bar.CloneBar());
 		}
 
 		// Token: 0x1700005F RID: 95

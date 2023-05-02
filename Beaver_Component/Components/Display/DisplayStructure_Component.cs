@@ -52,16 +52,16 @@ namespace Beaver.Display
 			List<LoadCase> loadCasesFromNames = structure.GetLoadCasesFromNames(new List<string>
 			{
 				text
-			});
+			});             //根据输入的名称获取荷载
 			bool flag = text != null;
 			if (flag)
 			{
 				lc = structure.GetLoadCasesFromNames(new List<string>
 				{
 					text
-				})[0];
+				})[0];   //获取的相同名字的荷载列表中的第一个
 			}
-			bool flag2 = num != 1;
+			bool flag2 = num != 1;  //显示模式
 			if (flag2)
 			{
 				num += 2;

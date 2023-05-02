@@ -142,6 +142,12 @@
   <data name="DisplayStructure_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DisplayStructure_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DMSO_Option_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DMSO_Option_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DMSO_Solver_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DMSO_Solver_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DSCO_Option_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DSCO_Option_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,6 +172,9 @@
   <data name="LSection_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LSection_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MultyStructure_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MultyStructure_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="NewElement_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NewElement_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -180,6 +189,9 @@
   </data>
   <data name="ReuseElement_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ReuseElement_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SingleStructure_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SingleStructure_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SquareHollowSection_BeaverIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SquareHollowSection_BeaverIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

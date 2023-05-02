@@ -143,6 +143,26 @@ namespace Beaver.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap DMSO_Option_BeaverIcon {
+            get {
+                object obj = ResourceManager.GetObject("DMSO_Option_BeaverIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap DMSO_Solver_BeaverIcon {
+            get {
+                object obj = ResourceManager.GetObject("DMSO_Solver_BeaverIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap DSCO_Option_BeaverIcon {
             get {
                 object obj = ResourceManager.GetObject("DSCO_Option_BeaverIcon", resourceCulture);
@@ -223,6 +243,16 @@ namespace Beaver.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap MultyStructure_BeaverIcon {
+            get {
+                object obj = ResourceManager.GetObject("MultyStructure_BeaverIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap NewElement_BeaverIcon {
             get {
                 object obj = ResourceManager.GetObject("NewElement_BeaverIcon", resourceCulture);
@@ -266,6 +296,16 @@ namespace Beaver.Properties {
         internal static System.Drawing.Bitmap ReuseElement_BeaverIcon {
             get {
                 object obj = ResourceManager.GetObject("ReuseElement_BeaverIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap SingleStructure_BeaverIcon {
+            get {
+                object obj = ResourceManager.GetObject("SingleStructure_BeaverIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
