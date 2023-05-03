@@ -55,6 +55,8 @@ namespace Beaver.Optimization
 			pManager.AddGenericParameter("Stock", "Stock", "The stock", 0);
 			pManager.AddNumberParameter("Runtime", "T", "Runtime", 0);
 			pManager.AddNumberParameter("Total production", "TM", "Total Product Member Number", 0);
+			pManager.AddGenericParameter("ProduceResults", "ProduceResults", "ProduceResults", GH_ParamAccess.list);
+			pManager.AddGenericParameter("StockUseResults", "StockUseResults", "StockUseResults", GH_ParamAccess.list);
 		}
 
 		// Token: 0x06000066 RID: 102 RVA: 0x00003878 File Offset: 0x00001A78
@@ -98,15 +100,15 @@ namespace Beaver.Optimization
 
 				List<GH_Number> list4 = new List<GH_Number>();
 				DataTree<GH_Number> dataTree = new DataTree<GH_Number>();
-				foreach (IMember member in structure.Members)
-				{
-					Bar bar = (Bar)member;
-					list4.Add(new GH_Number(bar.CrossSection.Area));
-					foreach (LoadCase key in structure.GetLoadCasesFromNames(list))
-					{
-						dataTree.Add(new GH_Number(bar.Nx[key][0]), new GH_Path(bar.Number));
-					}
-				}
+				//foreach (IMember member in structure.Members)
+				//{
+				//	Bar bar = (Bar)member;
+				//	list4.Add(new GH_Number(bar.CrossSection.Area));
+				//	foreach (LoadCase key in structure.GetLoadCasesFromNames(list))
+				//	{
+				//		dataTree.Add(new GH_Number(bar.Nx[key][0]), new GH_Path(bar.Number));
+				//	}
+				//}
 
 
 				for (int i = 0; i < discreateMultyStructureReuseOptimization.LowerBounds.Count; i++)
@@ -130,6 +132,8 @@ namespace Beaver.Optimization
 						}
 					}
 				}
+
+
 				DA.SetData(0, structure);
 				DA.SetData(1, new GH_Number(discreateMultyStructureReuseOptimization.ObjectiveValue));
 				DA.SetDataList(2, list4);
@@ -139,6 +143,8 @@ namespace Beaver.Optimization
 				DA.SetData(6, stock);
 				DA.SetData(7, stopwatch.ElapsedMilliseconds);
 				DA.SetData(8, structure.totalProduce_number);
+				DA.SetDataList(9, discreateMultyStructureReuseOptimization.ProductionResults);
+				DA.SetDataList(10, discreateMultyStructureReuseOptimization.StockUseResults);
 				stopwatch.Stop();
 			}
 			else

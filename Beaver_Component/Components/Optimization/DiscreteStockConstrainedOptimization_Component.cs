@@ -76,7 +76,7 @@ namespace Beaver.Optimization
 			DA.GetData<OptimOptions>(4, ref options);
 			DA.GetData<bool>(5, ref flag);  //是否计算
 			structure = structure.Clone();
-			stock = stock.Clone();
+			stock = stock.Clone();  
 			num--;
 			Stopwatch stopwatch = new Stopwatch();
 			stopwatch.Start();
