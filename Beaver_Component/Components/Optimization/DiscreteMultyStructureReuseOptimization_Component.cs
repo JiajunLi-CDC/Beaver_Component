@@ -14,6 +14,7 @@ using Beaver3D.Optimization.TopologyOptimization;
 using Beaver3D.Reuse;
 using Beaver.Properties;
 using Rhino.Geometry;
+using Beaver.Display;
 
 namespace Beaver.Optimization
 {
@@ -57,6 +58,8 @@ namespace Beaver.Optimization
 			pManager.AddNumberParameter("Total production", "TM", "Total Product Member Number", 0);
 			pManager.AddGenericParameter("ProduceResults", "ProduceResults", "ProduceResults", GH_ParamAccess.list);
 			pManager.AddGenericParameter("StockUseResults", "StockUseResults", "StockUseResults", GH_ParamAccess.list);
+			pManager.AddGenericParameter("memberSectionResults", "memberSectionResults", "memberSectionResults", GH_ParamAccess.tree);
+			pManager.AddGenericParameter("SectionCluster", "SectionCluster", "SectionCluster", GH_ParamAccess.list);
 		}
 
 		// Token: 0x06000066 RID: 102 RVA: 0x00003878 File Offset: 0x00001A78
@@ -70,6 +73,7 @@ namespace Beaver.Optimization
 			OptimOptions options = new OptimOptions();
 			List<GH_Point> list2 = new List<GH_Point>();
 			List<GH_Point> list3 = new List<GH_Point>();
+			
 
 
 			DA.GetData<Structure>(0, ref structure);
@@ -133,8 +137,41 @@ namespace Beaver.Optimization
 					}
 				}
 
+				DataTree<Line> members_mesh = new DataTree<Line>();   //构件的分类
+				List<double> Area_cluster = new List<double>();   //每个构件对应的截面面积
+				Dictionary<MemberProduceType, List<IMember>> outmemberToUseType = discreateMultyStructureReuseOptimization.resultJJ.memberToUseType;  //获取每个杆件的使用
+				List<MemberProduceType> keys = new List<MemberProduceType>(outmemberToUseType.Keys);
+				int path_count = 0;
+				for (int i = 0; i < keys.Count; i++)
+				{				
+					List<Line>  Line_list= new List<Line>();   //
 
-				DA.SetData(0, structure);
+					MemberProduceType key = keys[i];
+					List<IMember> value = new List<IMember>();
+					outmemberToUseType.TryGetValue(key, out value);   //获取对应member列表
+
+                    if (value.Count != 0)
+                    {
+						for (int j = 0; j < value.Count; j++)
+						{
+							IMember1D M = (IMember1D)value[j];  //每根杆件
+
+							//Mesh meshFromPolygon = DisplayHelper.GetMeshFromPolygon(M.Assignment.ElementGroups[i].CrossSection, length);
+							Line line = new Line(new Point3d(M.From.X, M.From.Y, M.From.Z), new Point3d(M.To.X, M.To.Y, M.To.Z));
+							Line_list.Add(line);
+						}
+
+						GH_Path path = new GH_Path(path_count);
+						path_count += 1;
+						members_mesh.AddRange(Line_list, path);
+
+						Area_cluster.Add(key.crossSectionArea);
+					}	
+				}
+
+
+
+					DA.SetData(0, structure);
 				DA.SetData(1, new GH_Number(discreateMultyStructureReuseOptimization.ObjectiveValue));
 				DA.SetDataList(2, list4);
 				DA.SetDataTree(3, dataTree);
@@ -143,8 +180,10 @@ namespace Beaver.Optimization
 				DA.SetData(6, stock);
 				DA.SetData(7, stopwatch.ElapsedMilliseconds);
 				DA.SetData(8, structure.totalProduce_number);
-				DA.SetDataList(9, discreateMultyStructureReuseOptimization.ProductionResults);
-				DA.SetDataList(10, discreateMultyStructureReuseOptimization.StockUseResults);
+				DA.SetDataList(9, discreateMultyStructureReuseOptimization.resultJJ.ProductionResults);
+				DA.SetDataList(10, discreateMultyStructureReuseOptimization.resultJJ.StockUseResults);
+				DA.SetDataTree(11, members_mesh);
+				DA.SetDataList(12, Area_cluster);
 				stopwatch.Stop();
 			}
 			else
