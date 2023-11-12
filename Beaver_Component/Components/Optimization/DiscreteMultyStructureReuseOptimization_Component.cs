@@ -171,7 +171,7 @@ namespace Beaver.Optimization
 
 
 
-					DA.SetData(0, structure);
+				DA.SetData(0, structure);
 				DA.SetData(1, new GH_Number(discreateMultyStructureReuseOptimization.ObjectiveValue));
 				DA.SetDataList(2, list4);
 				DA.SetDataTree(3, dataTree);

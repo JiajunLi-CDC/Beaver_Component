@@ -32,6 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Beaver3D">
+      <HintPath>C:\Users\DELL\AppData\Roaming\Grasshopper\Libraries\Beaver\Beaver3D.dll</HintPath>
+    </Reference>
+    <Reference Include="Gurobi90.NET">
+      <HintPath>D:\ProgrammingPackage\Gurobi903\win64\bin\Gurobi90.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="GyresMesh">
+      <HintPath>C:\Users\DELL\AppData\Roaming\Grasshopper\Libraries\CurlyKale\GyresMesh.dll</HintPath>
+    </Reference>
+    <Reference Include="PolyhedraCommon">
+      <HintPath>C:\Users\DELL\AppData\Roaming\Grasshopper\Libraries\Beaver\PolyhedraCommon.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -57,11 +69,42 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Beaver_MLInfo.cs" />
+    <Compile Include="Component\Joints\GetJoints_Component.cs" />
     <Compile Include="Component\Joints\JointsRotation_Component.cs" />
+    <Compile Include="JointsOptimize\BilinearTest.cs" />
+    <Compile Include="JointsOptimize\GhcGurobiTest.cs" />
+    <Compile Include="JointsOptimize\JointGurobiOptimizer.cs" />
+    <Compile Include="JointsOptimize\Joints.cs" />
+    <Compile Include="JointsOptimize\JointsOptimizeResult.cs" />
     <Compile Include="JointsOptimize\JointsRotation.cs" />
+    <Compile Include="JointsOptimize\Info\LightCallback.cs" />
+    <Compile Include="JointsOptimize\Info\LogCallback.cs" />
+    <Compile Include="JointsOptimize\Info\MyListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JointsOptimize\Info\MyLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JointsOptimize\Info\MyLog.designer.cs" />
+    <Compile Include="JointsOptimize\Info\OptimOptions.cs" />
+    <Compile Include="JointsOptimize\SANDGurobiJoints.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="JointsOptimize\Info\MyLog.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gurobi_BeaverIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

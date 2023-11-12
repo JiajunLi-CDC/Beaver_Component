@@ -1,8 +1,12 @@
 ﻿using Beaver_ML.JointsOptimize;
 using Grasshopper.Kernel;
+using Grasshopper.Kernel.Types.Transforms;
+using Hsy.GyresMesh;
+using Hsy.GyresMeshGH;
 using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Beaver_ML.Component.Joints
 {
@@ -11,7 +15,7 @@ namespace Beaver_ML.Component.Joints
         public JointsRotation_Component()
           : base("JointsRotation", "JointsRotation",
               "Rotate the points on the sphere joints",
-              "Beaver", "Subcategory")
+              "Beaver", "08 JointsOptimize")
         {
         }
 
@@ -30,6 +34,7 @@ namespace Beaver_ML.Component.Joints
         {
             pManager.AddPointParameter("Rotated", "R", "Resulting rotated Points on Joints", GH_ParamAccess.list);
             pManager.AddTransformParameter("Transform", "X", "Transformation data", 0);
+            pManager.AddMeshParameter("ConvexHull", "ConvexHull", "ConvexHull", 0);
             //pManager.HideParameter(1);
             //pManager.HideParameter(2);
         }
@@ -52,6 +57,32 @@ namespace Beaver_ML.Component.Joints
             JointsRotation rotationmanager = new JointsRotation(iPoints, iorigin_plane);
             List<Point3d> newPoints = new List<Point3d>();
             rotationmanager.CauculateNewPoints(rx, ry, rz,ref newPoints);   //旋转并且输出新的点
+            ITransform trans = rotationmanager.transformInformation;
+
+
+            Mesh mesh = null;
+            if (newPoints.Count > 3)
+            {
+                Point3d[] arr = newPoints.ToArray();
+                Polyline[] polylines = PolyhedraCommon.Geometry.WatermanPolyhedron.CalculateConvexHull(arr);
+                mesh = PolyhedraCommon.PolyhedraUtils.MeshFromClosedPolylines(polylines, 0.01);
+                mesh.UnifyNormals();
+            }
+            else
+            {
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Nodes with a valence number less than or equal to 3 cannot form a convex hull !");
+            }
+          
+            //GE_Mesh geMesh = new GE_Mesh();
+            //geMesh = mesh.ToGyresMesh();
+            //Mesh rhinoMesh = geMesh.ToRhinoMesh();
+
+           
+
+            DA.SetDataList(0, newPoints);
+            DA.SetData(1, trans);
+            DA.SetData(2, mesh);
+
         }
 
         protected override System.Drawing.Bitmap Icon

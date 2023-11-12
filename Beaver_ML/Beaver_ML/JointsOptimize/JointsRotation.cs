@@ -18,7 +18,7 @@ namespace Beaver_ML.JointsOptimize
 
         public double z_degree = 0;
 
-        public static ITransform transform = null;  //旋转后的迁移信息
+        public ITransform transformInformation = null;  //旋转后的迁移信息
 
         public Plane originPlan = new Plane(Plane.WorldXY); //迁移前的基准平面（默认为XYZ平面）
 
@@ -67,6 +67,7 @@ namespace Beaver_ML.JointsOptimize
             plane2.Transform(Transform.Rotation(z_degree * 0.017453292519943295, vector3d3, originPlan.Origin));   //绕z旋转
 
             ITransform transform = new Orientation(originPlan, plane2);    //获取迁移的信息
+            this.transformInformation = transform;
 
             return transform;
         }

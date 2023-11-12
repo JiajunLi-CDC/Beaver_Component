@@ -27,6 +27,8 @@ namespace Beaver.Optimization.Options
 			pManager.AddBooleanParameter("CuttingStock", "CuttingStock", "Consider partition of stock elements into multiple members (cutting stock)", 0, false);
 			pManager.AddBooleanParameter("TopologyFixed", "TopologyFixed", "Consider whether the structure topology is fixed", 0, false);
 			pManager.AddTextParameter("Parameters", "Param", "List of Optimizer parameters in the form or 'Parameter name, value'", GH_ParamAccess.list);
+			pManager.AddNumberParameter("ToleranceWaste", "ToleranceWaste", "切割浪费的初始浪费阈值", 0);
+			pManager.AddNumberParameter("ToleranceGeoLen", "ToleranceGeoLen", "允许分配超出库存杆长的缓冲长度", 0);
 			pManager[0].Optional = true;
 			pManager[1].Optional = true;
 			pManager[2].Optional = true;
@@ -36,6 +38,8 @@ namespace Beaver.Optimization.Options
 			pManager[6].Optional = true;
 			pManager[7].Optional = true;
 			pManager[8].Optional = true;
+			pManager[9].Optional = true;
+			pManager[10].Optional = true;
 		}
 
 		// Token: 0x0600006D RID: 109 RVA: 0x00003FE9 File Offset: 0x000021E9
@@ -65,6 +69,8 @@ namespace Beaver.Optimization.Options
 			bool cuttingStock = false;
 			bool topologyFixed = false;
 			List<string> list = new List<string>();   //表单中的gurobi优化器参数列表或“参数名称，值”
+			double iToleranceWaste = 0;
+			double iToleranceGeoLen = 0;
 
 
 			DA.GetData<int>(0, ref milpoptimizer);
@@ -76,6 +82,8 @@ namespace Beaver.Optimization.Options
 			DA.GetData<bool>(6, ref cuttingStock);
 			DA.GetData<bool>(7, ref topologyFixed);
 			DA.GetDataList<string>(8, list);
+			DA.GetData<double>(9, ref iToleranceWaste);
+			DA.GetData<double>(10, ref iToleranceGeoLen);
 
 			OptimOptions optimOptions = new OptimOptions();
 			optimOptions.MILPOptimizer = (MILPOptimizer)milpoptimizer;  //使用gurobi（milpoptimizer默认=0）
@@ -87,6 +95,8 @@ namespace Beaver.Optimization.Options
 			optimOptions.Compatibility = compatibility;
 			optimOptions.CuttingStock = cuttingStock;
             optimOptions.TopologyFixed = topologyFixed;
+			optimOptions.ToleranceWaste = iToleranceWaste;
+			optimOptions.ToleranceGeoLen = iToleranceGeoLen;    //控制形态的两个参数
 
             foreach (string text in list)
 			{

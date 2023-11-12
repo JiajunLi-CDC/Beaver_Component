@@ -21,7 +21,7 @@ namespace Beaver.Optimization
 	public class DiscreteStockConstrainedOptimization_Component : GH_Component
 	{
 		// Token: 0x06000063 RID: 99 RVA: 0x00003660 File Offset: 0x00001860
-		public DiscreteStockConstrainedOptimization_Component() : base("Discrete Stock Constrained Optimization", "DSCopt", "Perform a MILP truss stock constrained optimization with discrete stock", "Beaver", "06 Optimization")
+		public DiscreteStockConstrainedOptimization_Component() : base("Discrete Stock Constrained Optimization", "DSCopt", "Perform a MILP truss stock constrained optimization with discrete stock", "Beaver", "08 Test")
 		{
 		}
 

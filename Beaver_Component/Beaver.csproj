@@ -76,6 +76,7 @@
     <Compile Include="Components\CrossSection\SHSection_Component.cs" />
     <Compile Include="Components\Display\DisplayStock_Component.cs" />
     <Compile Include="Components\Display\DisplayStructure_Component.cs" />
+    <Compile Include="Components\Display\MoveNode_Component.cs" />
     <Compile Include="Components\Display\ResultsComponent.cs" />
     <Compile Include="Components\Geometry\Bar_Component.cs" />
     <Compile Include="Components\CrossSection\RectangularSection_Component.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Components\Material\Timber_Component.cs" />
     <Compile Include="Components\Optimization\DiscreteMultyStructureReuseOptimization_Component.cs" />
     <Compile Include="Components\Optimization\DiscreteStockConstrainedOptimization_Component.cs" />
+    <Compile Include="Components\Optimization\GeogmetryReuseOptimize_Component.cs" />
     <Compile Include="Components\Optimization\GhcGurobiTest.cs" />
     <Compile Include="Components\Optimization\Options\DMSOOptions_Component.cs" />
     <Compile Include="Components\Optimization\Options\DSCOOptions_Component.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Display\DisplayHelper.cs" />
     <Compile Include="Display\DisplayResultsType.cs" />
     <Compile Include="Display\MemberColor.cs" />
+    <Compile Include="Components\Display\DisplayMember_Component.cs" />
     <Compile Include="Display\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
